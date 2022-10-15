@@ -37,16 +37,13 @@ const obj = [
 ];
 
 const selected = ref({});
-const deleted = ref({});
-const isActive = ref({});
-isActive.value = false;
+const isActive = ref(false);
 
 const addToSelect = (item) => {
   selected.value = item;
-  deleted.value = item;
   isActive.value = true;
 };
-const removeItem = (object) => {
+const removeItem = () => {
   isActive.value = false;
 };
 </script>
@@ -57,9 +54,9 @@ const removeItem = (object) => {
       <div
         class="singleItem"
         :class="{ active: isActive }"
-        @click="removeItem(deleted)"
+        @click="removeItem()"
       >
-        <span v-if="isActive">{{ deleted.name }}</span>
+        <span v-if="isActive">{{ selected.name }}</span>
       </div>
     </div>
     <div class="selectList _select">
